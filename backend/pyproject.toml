@@ -1,0 +1,83 @@
+[project]
+name = "ai-image-segmentation"
+version = "0.1.0"
+description = "FastAPI backend for AI image segmentation using SAM 2 and LaMa"
+authors = [
+    {name = "ant100pshnik", email = "vladimirov.artem.prk@gmail.com"}
+]
+requires-python = ">=3.13"
+dependencies = []
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.13"
+pydantic-settings = "^2.0"
+opencv-python = "^4.8"
+torch = {version = ">=2.5.1", source = "torch-cpu"}
+torchvision = {version = ">=0.20.0", source = "torch-cpu"}
+sam-2 = {git = "https://github.com/facebookresearch/sam2.git"}
+
+[[tool.poetry.source]]
+name = "torch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.15.12"
+black = "^26.3.1"
+isort = "^8.0.1"
+mypy = "^2.0.0"
+pre-commit = "^4.6.0"
+flake8-bugbear = "^25.11.29"
+flake8-comprehensions = "^3.17.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+  "E",    # pycodestyle errors
+  "W",    # pycodestyle warnings
+  "F",    # pyflakes
+  "B",    # flake8-bugbear
+  "I",    # isort
+  "C4",   # flake8-comprehensions
+  "UP",   # pyupgrade
+  "SIM",  # flake8-simplify
+  "TCH",  # flake8-type-checking
+  "PERF", # perflint (bundled in ruff)
+  "RUF",  # ruff-specific rules
+]
+ignore = [
+  "E501",  # line too long (controlled by black)
+  "B008",  # FastAPI Depends() triggers function calls in default args
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # allow assert in tests
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+warn_unused_ignores = true
+disallow_untyped_defs = true
+disallow_any_generics = true
+check_untyped_defs = true
+strict_optional = true
+ignore_missing_imports = true

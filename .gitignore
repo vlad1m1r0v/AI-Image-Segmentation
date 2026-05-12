@@ -1,5 +1,6 @@
 # CV model weights — SAM 2 (~900MB), LaMa
-models/
+models/*.pt
+models/*.yaml
 
 # Generated outputs
 output.*

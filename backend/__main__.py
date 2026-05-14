@@ -66,7 +66,7 @@ if __name__ == "__main__":
     # 6. Mask preparation for LaMa (Dilation)
     logger.info("Expanding the mask for inpainting (dilation)...")
     # Create a copy of the mask with dilation
-    final_mask_for_lama = dilate_mask(smooth, iterations=12)
+    final_mask_for_lama = dilate_mask(smooth)
 
     # 7. Background inpainting (LaMa)
     logger.info("Inpainting background via LaMa... this may take a few seconds.")

@@ -6,7 +6,7 @@ import torch
 from utils.lama import download_model, prepare_image_and_mask
 from utils.logger import get_logger
 
-from .config import config
+from config import config
 
 logger = get_logger(__name__)
 

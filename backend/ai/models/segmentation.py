@@ -7,7 +7,7 @@ from sam2.sam2_image_predictor import SAM2ImagePredictor
 
 from utils.logger import get_logger
 
-from .config import config
+from config import config
 
 logger = get_logger(__name__)
 

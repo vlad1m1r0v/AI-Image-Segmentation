@@ -8,8 +8,8 @@ from pydantic_settings import (
 
 
 class SegmentationParamsConfig(BaseModel):
-    pred_iou_thresh: float = 0.88
-    stability_score_thresh: float = 0.95
+    pred_iou_thresh: float
+    stability_score_thresh: float
 
 
 class SegmentationConfig(BaseModel):
@@ -25,10 +25,16 @@ class InpaintingConfig(BaseModel):
     device: str
     checkpoint: str
 
+class MaskConfig(BaseModel):
+    noise_kernel_size: int
+    smooth_kernel_size: int
+    dilate_iterations: int
+
 
 class AppConfig(BaseSettings):
     segmentation: SegmentationConfig
     inpainting: InpaintingConfig
+    mask: MaskConfig
 
     model_config = SettingsConfigDict(toml_file="config.toml")
 

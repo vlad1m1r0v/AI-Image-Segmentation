@@ -12,3 +12,8 @@ stability_score_thresh = 0.95
 device = "cpu"
 checkpoint = "models/big-lama.pt"
 model_url = "https://github.com/enesmsahin/simple-lama-inpainting/releases/download/v0.1.0/big-lama.pt"
+
+[mask]
+noise_kernel_size = 3
+smooth_kernel_size = 5
+dilate_iterations = 10
